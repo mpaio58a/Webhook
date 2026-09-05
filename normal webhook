@@ -1,0 +1,48 @@
+local HttpService = game:GetService("HttpService")
+local Players = game:GetService("Players")
+
+local player = Players.LocalPlayer
+local webhookUrl = "https://discord.com/api/webhooks/1545822563110752359/Ur1RCSXSQVb7DfEduTEX2XuFqUyhlQ_1lRgq9Ywc0l-YozWyFQMrj5MpPi9p33Rs1TMe"
+
+local requestFunc = request or http_request or (http and http.request) or syn.request or (fluxus and fluxus.request) or (Krnl and Krnl.request)
+
+local randomColor = math.random(0, 16777215)
+
+local data = {
+    ["embeds"] = {{
+        ["title"] = "🚀 Executor Tracker Notify!",
+        ["color"] = randomColor,
+        ["fields"] = {
+            {
+                ["name"] = "👤 Username",
+                ["value"] = player.Name,
+                ["inline"] = true
+            },
+            {
+                ["name"] = "🆔 User ID",
+                ["value"] = tostring(player.UserId),
+                ["inline"] = true
+            },
+            {
+                ["name"] = "⚡ Execute",
+                ["value"] = "normal script",
+                ["inline"] = false
+            }
+        },
+        ["footer"] = {
+            ["text"] = "Tracker System • " .. os.date("%Y-%m-%d %H:%M:%S")
+        }
+    }}
+}
+
+if requestFunc then
+    local jsonData = HttpService:JSONEncode(data)
+    pcall(function()
+        requestFunc({
+            Url = webhookUrl,
+            Method = "POST",
+            Headers = {["Content-Type"] = "application/json"},
+            Body = jsonData
+        })
+    end)
+end
